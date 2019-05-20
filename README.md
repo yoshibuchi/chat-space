@@ -5,9 +5,9 @@
 |name|string|null: false,foreign: true|
 
 ### Association
-has_many :users, through: :group_usersテーブル
-has_many :group_usersテーブル
-has_many :messageテーブル
+has_many :users, through: :group_users
+has_many :group_users
+has_many :message
 
 ## messageテーブル
 
@@ -20,8 +20,8 @@ has_many :messageテーブル
 
 ### Association
 
-has_many :group
-has_many :user
+belongs_to :group
+belongs_to :user
 
 ## usersテーブル
 
@@ -31,8 +31,8 @@ has_many :user
 |email|string|null: false|
 
 ### Association
-has_many :groups, through: :group_usersテーブル
-has_many :group_usersテーブル
+has_many :groups, through: :group_users
+has_many :group_users
 has_many :messages
 
 ## group_userテーブル
@@ -42,8 +42,8 @@ has_many :messages
 |group_id|reference|null: false, foreign_key: true|
 
 ### Association
-has_many :group
-has_many :user
+belongs_to :group
+belongs_to :user
 
 
 
