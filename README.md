@@ -2,12 +2,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false,foreign: true|
+|name|string|null: false|
 
 ### Association
 has_many :users, through: :group_users
 has_many :group_users
-has_many :message
+has_many :messages
 
 ## messageテーブル
 
@@ -27,7 +27,7 @@ belongs_to :user
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, unique :true, index|
 |email|string|null: false|
 
 ### Association
