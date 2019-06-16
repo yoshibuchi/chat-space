@@ -1,0 +1,25 @@
+.chat-main
+  .chat-main__main-header
+    .chat-main-header__left-box
+      .chat-main-header__left-box__current-group
+        sample
+
+      .chat-main-header__left-box__member-list
+        Member :
+        .chat-main-header__left-box__member-list__member
+          hoge
+        .chat-main-header__left-box__member-list__member
+          yoshi
+    .chat-main__right-header
+      Edit
+  .messages
+    = render @messages
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__input-box
+        = f.label :image, class: 'form__input-box__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit-btn'         
+ 
