@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+    before_action :set_group
     def index
       @message = Message.new
       @messages = @group.messages.includes(:user)
@@ -6,15 +7,16 @@ class MessagesController < ApplicationController
 
     def create
       @message = @group.messages.new(message_params)
-      respond_to do |format|
-        format.html { redirect_to tweet_path(params[:tweet_id])  }
-        format.json
       if @message.save
-        redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'
+        respond_to do |format|
+          format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'  }
+          format.json
+        end
       else
         @messages = @group.messages.includes(:user)
         flash.now[:alert] = 'メッセージを入力してください。'
         render :index
+      end
     end
     private
 
@@ -26,3 +28,6 @@ class MessagesController < ApplicationController
       @group = Group.find(params[:group_id])
     end
 end
+    #   @users = @group.users
+    
+# end @group = Group.find(params[:group_id])
