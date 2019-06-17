@@ -1,20 +1,34 @@
 $(function(){
-    function buildHTML(comment){
-      var html = `<p>
-                    <strong>
-                      <a href=/users/${comment.user_id}>${comment.user_name}</a>
-                      ：
-                    </strong>
-                    ${comment.text}
-                  </p>`
+    function buildHTML(message){
+      image = (message.image) ? `<img class= "message__text__image" src=${message.image} >` : "";
+      var html = `<div class="message">
+      <div class="message__upper-info">
+        <div class="message__upper-info__talker">
+          ${message.user_name}
+        </div>
+        <div class="message__upper-info__date">
+          ${message.date}
+        </div>
+      </div>
+      <div class="message__text">
+        ${message.content}
+        ${image}
+        
+      </div>
+    </div>`
       return html;
     }
-    $('#new_comment').on('submit', function(e){
+    $("#new_message").on('submit', function(e){
+      // console.log(e)
       e.preventDefault();
       var formData = new FormData(this);
-      var href = window.location.href + '/comments'
+      var text = $(".form__message").val()
+      var url = $(this).attr('action');
+      console.log(text)
+      console.log(url)
+      console.log('go')
       $.ajax({
-        url: href,
+        url: url,
         type: "POST",
         data: formData,
         dataType: 'json',
@@ -22,12 +36,15 @@ $(function(){
         contentType: false
       })
       .done(function(data){
+        console.log(data)
         var html = buildHTML(data);
-        $('.comments').append(html)
-        $('.textbox').val('')
-      .fail(function(){
-        alert('error');
-        }) 
+        $('.form__submit-button').prop('disabled', false);
+        $('.messages').append(html);
+        $('.textbox').val('');
       })
+      .fail(function(){
+        console.log('error');
+      }) 
+      return false;
     })
   });
