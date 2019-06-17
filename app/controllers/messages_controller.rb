@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
         respond_to do |format|
           format.html { redirect_to "group_messages_path(params[:group_id]", notice: 'メッセージが送信されました'  }
           format.json
-          # binding.pry
         end
       else
         @messages = @group.messages.includes(:user)
@@ -28,7 +27,4 @@ class MessagesController < ApplicationController
     def set_group
       @group = Group.find(params[:group_id])
     end
-end
-    #   @users = @group.users
-    
-# end @group = Group.find(params[:group_id])
+  end

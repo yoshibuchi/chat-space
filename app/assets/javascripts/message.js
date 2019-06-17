@@ -19,14 +19,10 @@ $(function(){
       return html;
     }
     $("#new_message").on('submit', function(e){
-      // console.log(e)
       e.preventDefault();
       var formData = new FormData(this);
       var text = $(".form__message").val()
       var url = $(this).attr('action');
-      console.log(text)
-      console.log(url)
-      console.log('go')
       $.ajax({
         url: url,
         type: "POST",
@@ -36,14 +32,14 @@ $(function(){
         contentType: false
       })
       .done(function(data){
-        console.log(data)
         var html = buildHTML(data);
         $('.form__submit-button').prop('disabled', false);
         $('.messages').append(html);
         $('.textbox').val('');
+        $('#new_message')[0].reset();
       })
       .fail(function(){
-        console.log('error');
+        alert('error');
       }) 
       return false;
     })
