@@ -37,6 +37,7 @@ $(function(){
         $('.messages').append(html);
         $('.textbox').val('');
         $('#new_message')[0].reset();
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
       })
       .fail(function(){
         alert('error');
