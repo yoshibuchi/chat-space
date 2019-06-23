@@ -35,8 +35,8 @@ $(document).on('turbolinks:load', function() {
       processData: false,
       contentType: false
     })
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(message){
+      var html = buildHTML(message);
       
       $('.form__submit-button').prop('disabled', false);
       $('.messages').append(html);
