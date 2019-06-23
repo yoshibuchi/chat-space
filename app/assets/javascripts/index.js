@@ -11,14 +11,7 @@ $(document).on('turbolinks:load', function(){
               search_list.append(html);
           }
 
-        function groupUser(name, id)
-          var html = `<div class="chat-group-user clearfix">
-            <p class="chat-group-user__name">ユーザー名</p>
-            <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="ユーザーのid" data-user-name="ユーザー名">追加</div>
-          </div>`
-
         function appendNoUser(user){
-          var html = `<div class='chat-group-user clearfix'>${ user }</div>`
           search_list.append(html);
           }
 
@@ -63,8 +56,6 @@ $(document).on('turbolinks:load', function(){
             var userName = $(this).data('user-name');
             addUser(userId,userName);
             $(this).parent().remove();
-            groupUser(name, id)
-
             });
         
             $(document).on("click", ".user-search-remove", function () {
