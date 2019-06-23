@@ -12,7 +12,6 @@ $(document).on('turbolinks:load', function(){
           }
 
         function appendNoUser(user){
-          // var html = `<div class='chat-group-user clearfix'>${ user }</div>`
           search_list.append(html);
           }
 
