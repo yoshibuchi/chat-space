@@ -15,8 +15,8 @@
     = render @messages
   .form
     = form_for [@group, @message] do |f|
-      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
       .form__input-box
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         = f.label :image, class: 'form__input-box__image' do
           = fa_icon 'picture-o', class: 'icon'
           = f.file_field :image, class: 'hidden'

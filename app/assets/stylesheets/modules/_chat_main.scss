@@ -82,8 +82,9 @@
       box-sizing: border-box;
       height: 90px;
       padding: 20px 40px;
-      position: relative;
       &__message {
+        position: relative;
+        overflow: hidden;
         display: inline-block;
         border: none;
         float: left;
@@ -99,6 +100,7 @@
         line-height: 50px;
         padding-right: 10px;
         padding-left: 10px;
+        margin-right: 10px;
         &__image {
           position: absolute;
           right: 140px;
@@ -111,6 +113,7 @@
         }
       }
       &__submit-btn {
+        position: absolute;
         display: flex;
         background-color: $light_blue;
         border: none;
@@ -120,5 +123,6 @@
         line-height: 50px;
         margin-left: 15px;
         padding: 0 30px;
+        right: 30px;
       }
     }
